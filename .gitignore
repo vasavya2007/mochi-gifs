@@ -1,0 +1,23 @@
+# Environment & Secret Keys
+.env
+
+# Python Bytecode and Caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual Environments
+venv/
+.venv/
+ENV/
+env/
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

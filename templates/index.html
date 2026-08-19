@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tiny.gif — a tiny collection of silly little gifs ♡</title>
+  <meta name="description" content="A cute personal sticker collection of tiny animated GIFs, reactions, and characters.">
+  
+  <!-- Favicon (cute pastel heart emoji SVG) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎀</text></svg>">
+  
+  <!-- Google Fonts: Quicksand, M PLUS Rounded 1c, Gaegu -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+  <!-- Floating Background Particles (Canvas + Drifting Elements) -->
+  <canvas id="bg-canvas" class="bg-canvas"></canvas>
+  
+  <div class="floating-stickers" aria-hidden="true">
+    <span class="float-item s1">✨</span>
+    <span class="float-item s2">🎀</span>
+    <span class="float-item s3">🌸</span>
+    <span class="float-item s4">✧</span>
+    <span class="float-item s5">♡</span>
+    <span class="float-item s6">🍓</span>
+    <span class="float-item s7">✦</span>
+    <span class="float-item s8">🌙</span>
+  </div>
+
+  <!-- Floating Navigation Window -->
+  <nav class="nav-container" aria-label="Main Navigation">
+    <div class="nav-window">
+      <div class="nav-brand">
+        <span class="nav-icon">🎀</span>
+        <span class="nav-title">tiny.gif</span>
+      </div>
+      <div class="nav-links">
+        <a href="#home" class="nav-link active" data-nav="home">🌸 Home</a>
+        <a href="#explore" class="nav-link" data-nav="explore">🔍 Explore</a>
+        <a href="#categories" class="nav-link" data-nav="categories">🏷️ Tags</a>
+        <a href="#about" class="nav-link" data-nav="about">💌 About</a>
+      </div>
+      <div class="theme-switcher">
+        <button class="theme-btn" id="theme-btn" title="Switch pastel theme" aria-label="Switch pastel color theme">
+          <span id="theme-icon">🌸</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Scrapbook Container -->
+  <main class="scrapbook-container" id="home">
+    
+    <!-- Hero / Header Section -->
+    <header class="hero-section">
+      <div class="hero-decor top-kaomoji">˚₊‧꒰ა ♡ ໒꒱ ‧₊˚</div>
+      <h1 class="hero-title">tiny.gif</h1>
+      <p class="hero-subtitle">little things that move</p>
+      <p class="hero-description">a tiny collection of silly little gifs ♡</p>
+      
+      <!-- Live Stats Badges -->
+      <div class="hero-stats">
+        <span class="stat-badge" id="stat-total-gifs">
+          <span class="badge-icon">✨</span> <span id="count-gifs">0</span> tiny gifs
+        </span>
+        <span class="stat-badge" id="stat-total-tags">
+          <span class="badge-icon">🏷️</span> <span id="count-tags">0</span> tags
+        </span>
+        <span class="stat-badge stat-size">
+          <span class="badge-icon">📏</span> 50px – 90px tiny scale
+        </span>
+      </div>
+    </header>
+
+    <!-- Search & Filter Controls -->
+    <section class="controls-section" id="explore">
+      <div class="search-card">
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            id="search-input" 
+            placeholder="search tiny gifs... (e.g. cute, miffy, sleepy, cat, anime)" 
+            autocomplete="off"
+            aria-label="Search tiny GIFs by tag, title, or keyword"
+          />
+          <button id="search-clear-btn" class="search-clear-btn" aria-label="Clear search text" title="Clear">✕</button>
+        </div>
+
+        <div class="sort-wrapper">
+          <label for="sort-select" class="sort-label">order:</label>
+          <select id="sort-select" class="sort-select" aria-label="Sort GIFs">
+            <option value="newest">♡ Newest</option>
+            <option value="oldest">♡ Oldest</option>
+            <option value="random">♡ Random Shuffle</option>
+            <option value="title">♡ Name (A-Z)</option>
+          </select>
+          <button id="surprise-btn" class="cute-btn btn-small btn-surprise" title="Open a random cute GIF!">
+            <span>✨</span> surprise me
+          </button>
+        </div>
+      </div>
+
+      <!-- Category Filter Pills Bar -->
+      <div class="category-bar-wrapper">
+        <div class="category-scroll-hint left">‹</div>
+        <div class="category-pills" id="category-pills" role="tablist" aria-label="Tag Categories">
+          <!-- Dynamic Category Pills will be rendered here -->
+          <button class="cat-pill active" data-tag="all">
+            <span class="pill-sparkle">✦</span> all <span class="pill-count">(0)</span>
+          </button>
+        </div>
+        <div class="category-scroll-hint right">›</div>
+      </div>
+    </section>
+
+    <!-- Active Filter Indicator & Results Info -->
+    <div class="results-header" id="results-header">
+      <span class="results-count" id="results-count">Showing all gifs</span>
+      <span class="results-decor">⋆｡˚ ☁︎ ˚｡⋆</span>
+    </div>
+
+    <!-- GIF Grid -->
+    <section class="gallery-section">
+      <div class="gif-grid" id="gif-grid">
+        <!-- GIF Cards will be rendered dynamically by app.js -->
+        <div class="loading-state">
+          <div class="loading-spinner">🎀</div>
+          <p>gathering cute little gifs...</p>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state hidden" id="empty-state">
+        <div class="empty-icon">(｡•́︿•̀｡)</div>
+        <h3>no tiny gifs found</h3>
+        <p>try searching for something else like "cute", "miffy", or "cat" ♡</p>
+        <button class="cute-btn" id="reset-search-btn">view all gifs ✨</button>
+      </div>
+    </section>
+
+    <!-- Category Browser Section -->
+    <section class="categories-section" id="categories">
+      <div class="section-heading">
+        <h2 class="section-title"><span>🏷️</span> tag drawer</h2>
+        <p class="section-sub">browse by cute themes & reactions</p>
+      </div>
+      <div class="categories-grid" id="categories-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- Cute About Scrapbook Section -->
+    <section class="about-section" id="about">
+      <div class="about-card">
+        <div class="about-pin">📌</div>
+        <div class="about-tape"></div>
+        <div class="about-header">
+          <span class="about-kaomoji">˚₊‧ ꒰ა 💌 ໒꒱ ‧₊˚</span>
+          <h2 class="about-title">about tiny.gif</h2>
+        </div>
+        <div class="about-body">
+          <p class="about-quote">
+            "made because tiny gifs make everything better ♡"
+          </p>
+          <p class="about-text">
+            a little collection of reactions, characters, silly moments and things that deserve to wiggle.
+          </p>
+          <div class="about-features">
+            <div class="feature-item">
+              <span class="feat-icon">🎀</span>
+              <span><strong>discord-safe</strong> — no sliced or offset frame glitches</span>
+            </div>
+            <div class="feature-item">
+              <span class="feat-icon">📏</span>
+              <span><strong>tiny scale</strong> — resized to cute 50px–90px dimensions</span>
+            </div>
+            <div class="feature-item">
+              <span class="feat-icon">🔗</span>
+              <span><strong>one-click copy</strong> — copy stable direct URLs for chat</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-footer">
+          <span>maintained with python & pillow ✨</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scrapbook Footer -->
+    <footer class="site-footer">
+      <div class="footer-decor">˚₊‧꒰ა 🌸 ໒꒱ ‧₊˚</div>
+      <p class="footer-text">
+        <strong>tiny.gif</strong> — a personal corner for cute animations ♡
+      </p>
+      <p class="footer-sub">
+        click any gif card to view details, copy URL, or download!
+      </p>
+    </footer>
+
+  </main>
+
+  <!-- Modal / Floating Scrapbook Details Window -->
+  <div class="modal-backdrop hidden" id="gif-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-window">
+      <!-- Modal Title Bar -->
+      <div class="modal-header">
+        <div class="modal-dots">
+          <span class="dot dot-pink"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <span class="modal-bar-title" id="modal-bar-title">tiny gif inspection ♡</span>
+        <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">✕</button>
+      </div>
+
+      <!-- Modal Content Body -->
+      <div class="modal-body">
+        <div class="modal-preview-wrapper">
+          <button class="modal-nav-arrow arrow-prev" id="modal-prev-btn" aria-label="Previous GIF" title="Previous GIF (Left Arrow)">‹</button>
+          <div class="modal-preview-box">
+            <img id="modal-img" src="" alt="GIF Preview" class="modal-gif-img" />
+            <div class="modal-dim-badge" id="modal-dim-badge">80 × 80 px</div>
+            <button class="modal-fav-btn" id="modal-fav-btn" title="Add to favorites" aria-label="Toggle favorite">♡</button>
+          </div>
+          <button class="modal-nav-arrow arrow-next" id="modal-next-btn" aria-label="Next GIF" title="Next GIF (Right Arrow)">›</button>
+        </div>
+
+        <div class="modal-info">
+          <h3 class="modal-gif-title" id="modal-title">GIF Title</h3>
+          
+          <div class="modal-tags" id="modal-tags">
+            <!-- Tags rendered by JS -->
+          </div>
+
+          <div class="modal-specs">
+            <div class="spec-row">
+              <span class="spec-label">📏 Dimensions:</span>
+              <span class="spec-val" id="modal-dims">80 × 80 px</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">💾 File Size:</span>
+              <span class="spec-val" id="modal-size">3.2 KB</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">🏷️ ID:</span>
+              <span class="spec-val" id="modal-id">cute_001</span>
+            </div>
+            <div class="spec-row" id="modal-source-row">
+              <span class="spec-label">🌐 Source:</span>
+              <span class="spec-val" id="modal-source">GIPHY</span>
+            </div>
+          </div>
+
+          <!-- Direct URL Copy Field -->
+          <div class="modal-url-box">
+            <label class="url-label" for="modal-url-input">Direct GIF URL:</label>
+            <div class="url-input-group">
+              <input type="text" id="modal-url-input" readonly class="url-input" />
+              <button class="cute-btn btn-small" id="modal-copy-url-btn">
+                <span class="btn-icon">♡</span> Copy
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Copy Formats -->
+          <div class="modal-quick-formats">
+            <span class="formats-label">quick copy:</span>
+            <button class="format-chip" id="copy-markdown-btn" title="Copy Markdown Image tag">Markdown</button>
+            <button class="format-chip" id="copy-html-btn" title="Copy HTML Image tag">HTML</button>
+            <button class="format-chip" id="copy-discord-btn" title="Copy Discord URL">Discord</button>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="modal-actions">
+            <button class="cute-btn btn-primary" id="modal-main-copy-btn">
+              <span class="btn-icon">♡</span> Copy GIF Link
+            </button>
+            <a href="#" download id="modal-download-btn" class="cute-btn btn-secondary">
+              <span class="btn-icon">↓</span> Download
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification for "copied ♡" -->
+  <div class="toast-notification hidden" id="toast" role="status" aria-live="polite">
+    <span class="toast-heart">♡</span>
+    <span class="toast-text" id="toast-text">copied to clipboard ♡</span>
+    <span class="toast-sparkle">✨</span>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
