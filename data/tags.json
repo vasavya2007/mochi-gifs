@@ -9,43 +9,175 @@
     "crying": 8,
     "sleepy": 8,
     "anime": 12,
-    "happy": 8
+    "happy": 8,
+    "capybara": 10,
+    "totoro": 10,
+    "nezuko": 10,
+    "pusheen": 10,
+    "cinnamoroll": 10,
+    "kuromi": 10,
+    "corgi": 10,
+    "shocked": 8,
+    "blushing": 8,
+    "excited": 8,
+    "thumbs up": 8,
+    "anya forger": 10,
+    "kirby": 10,
+    "pikachu": 10
   },
   "aliases": {
-    "bubu dudu": ["bubu dudu", "bubu dudu cute", "bubu and dudu", "bubu dudu love"],
-    "bubu": ["bubu bear", "bubu dudu bubu", "bubu cute"],
-    "dudu": ["dudu panda", "bubu dudu dudu", "dudu cute"],
-    "hello kitty": ["hello kitty", "sanrio hello kitty", "hello kitty cute"],
-    "miffy": ["miffy", "miffy cute", "miffy bunny"],
-    "gojo": ["satoru gojo", "gojo satoru", "gojo jjk"],
-    "sukuna": ["ryomen sukuna", "sukuna jjk"],
-    "tanjiro": ["tanjiro kamado", "demon slayer tanjiro"],
-    "nezuko": ["nezuko kamado", "nezuko demon slayer", "nezuko cute"],
-    "luffy": ["monkey d luffy", "one piece luffy"],
-    "zoro": ["roronoa zoro", "one piece zoro"],
-    "naruto": ["naruto uzumaki", "naruto shippuden"],
-    "kakashi": ["kakashi hatake", "kakashi sensei"],
-    "itachi": ["itachi uchiha", "itachi akatsuki"],
-    "anya": ["anya forger", "spy x family anya", "anya smirking"],
-    "levi": ["levi ackerman", "attack on titan levi"],
-    "killua": ["killua zoldyck", "hunter x hunter killua"],
-    "totoro": ["my neighbor totoro", "totoro ghibli", "totoro cute"],
-    "no-face": ["no face ghibli", "spirited away no face", "kaonashi"],
-    "calcifer": ["calcifer howl", "howls moving castle calcifer"],
-    "pusheen": ["pusheen cat", "pusheen the cat", "pusheen cute"],
-    "cinnamoroll": ["cinnamoroll sanrio", "cinnamoroll cute"],
-    "kuromi": ["kuromi sanrio", "kuromi cute"],
-    "my melody": ["my melody sanrio", "my melody cute"],
-    "pompompurin": ["pompompurin sanrio", "pompompurin cute"],
-    "rilakkuma": ["rilakkuma bear", "rilakkuma cute", "san-x rilakkuma"],
-    "molang": ["molang bunny", "molang cute"],
-    "capybara": ["capybara cute", "capybara chill", "capybara animal"],
-    "mochi cat": ["mochi mochi cat", "mochi peach cat"],
-    "popcat": ["popcat meme", "pop cat"],
-    "nyan cat": ["nyan cat classic", "nyan cat rainbow"],
-    "isabelle": ["isabelle animal crossing", "animal crossing isabelle"],
-    "kirby": ["kirby nintendo", "kirby cute", "kirby dancing"],
-    "pikachu": ["pikachu pokemon", "pikachu cute", "pikachu dancing"]
+    "bubu dudu": [
+      "bubu dudu",
+      "bubu dudu cute",
+      "bubu and dudu",
+      "bubu dudu love"
+    ],
+    "bubu": [
+      "bubu bear",
+      "bubu dudu bubu",
+      "bubu cute"
+    ],
+    "dudu": [
+      "dudu panda",
+      "bubu dudu dudu",
+      "dudu cute"
+    ],
+    "hello kitty": [
+      "hello kitty",
+      "sanrio hello kitty",
+      "hello kitty cute"
+    ],
+    "miffy": [
+      "miffy",
+      "miffy cute",
+      "miffy bunny"
+    ],
+    "gojo": [
+      "satoru gojo",
+      "gojo satoru",
+      "gojo jjk"
+    ],
+    "sukuna": [
+      "ryomen sukuna",
+      "sukuna jjk"
+    ],
+    "tanjiro": [
+      "tanjiro kamado",
+      "demon slayer tanjiro"
+    ],
+    "nezuko": [
+      "nezuko kamado",
+      "nezuko demon slayer",
+      "nezuko cute"
+    ],
+    "luffy": [
+      "monkey d luffy",
+      "one piece luffy"
+    ],
+    "zoro": [
+      "roronoa zoro",
+      "one piece zoro"
+    ],
+    "naruto": [
+      "naruto uzumaki",
+      "naruto shippuden"
+    ],
+    "kakashi": [
+      "kakashi hatake",
+      "kakashi sensei"
+    ],
+    "itachi": [
+      "itachi uchiha",
+      "itachi akatsuki"
+    ],
+    "anya": [
+      "anya forger",
+      "spy x family anya",
+      "anya smirking"
+    ],
+    "levi": [
+      "levi ackerman",
+      "attack on titan levi"
+    ],
+    "killua": [
+      "killua zoldyck",
+      "hunter x hunter killua"
+    ],
+    "totoro": [
+      "my neighbor totoro",
+      "totoro ghibli",
+      "totoro cute"
+    ],
+    "no-face": [
+      "no face ghibli",
+      "spirited away no face",
+      "kaonashi"
+    ],
+    "calcifer": [
+      "calcifer howl",
+      "howls moving castle calcifer"
+    ],
+    "pusheen": [
+      "pusheen cat",
+      "pusheen the cat",
+      "pusheen cute"
+    ],
+    "cinnamoroll": [
+      "cinnamoroll sanrio",
+      "cinnamoroll cute"
+    ],
+    "kuromi": [
+      "kuromi sanrio",
+      "kuromi cute"
+    ],
+    "my melody": [
+      "my melody sanrio",
+      "my melody cute"
+    ],
+    "pompompurin": [
+      "pompompurin sanrio",
+      "pompompurin cute"
+    ],
+    "rilakkuma": [
+      "rilakkuma bear",
+      "rilakkuma cute",
+      "san-x rilakkuma"
+    ],
+    "molang": [
+      "molang bunny",
+      "molang cute"
+    ],
+    "capybara": [
+      "capybara cute",
+      "capybara chill",
+      "capybara animal"
+    ],
+    "mochi cat": [
+      "mochi mochi cat",
+      "mochi peach cat"
+    ],
+    "popcat": [
+      "popcat meme",
+      "pop cat"
+    ],
+    "nyan cat": [
+      "nyan cat classic",
+      "nyan cat rainbow"
+    ],
+    "isabelle": [
+      "isabelle animal crossing",
+      "animal crossing isabelle"
+    ],
+    "kirby": [
+      "kirby nintendo",
+      "kirby cute",
+      "kirby dancing"
+    ],
+    "pikachu": [
+      "pikachu pokemon",
+      "pikachu cute",
+      "pikachu dancing"
+    ]
   },
   "catalog": {
     "anime_characters": [
