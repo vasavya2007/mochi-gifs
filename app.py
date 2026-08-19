@@ -1,6 +1,5 @@
 import os
 import sys
-import json
 import random
 from typing import Dict, Any, List
 from flask import Flask, render_template, jsonify, send_from_directory, request, abort
@@ -16,22 +15,21 @@ if sys.platform == "win32":
 app = Flask(__name__, static_folder="static", template_folder="templates")
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-COLLECTION_FILE = os.path.join(BASE_DIR, "data", "collection.json")
 GIFS_DIR = os.path.join(BASE_DIR, "gifs")
+
+sys.path.insert(0, BASE_DIR)
+from data import db as gifdb
+
+# Make sure the database + tables exist on startup
+gifdb.init_db()
 
 
 def get_collection_data() -> Dict[str, Any]:
-    """Load collection metadata safely from JSON."""
-    if not os.path.exists(COLLECTION_FILE):
-        return {"gifs": []}
+    """Load all GIF metadata from SQLite (replaces the old JSON reader)."""
     try:
-        with open(COLLECTION_FILE, "r", encoding="utf-8") as f:
-            data = json.load(f)
-            if "gifs" not in data:
-                data["gifs"] = []
-            return data
+        return {"gifs": gifdb.get_all_gifs()}
     except Exception as e:
-        app.logger.error(f"Error loading collection.json: {e}")
+        app.logger.error(f"Error loading collection from database: {e}")
         return {"gifs": []}
 
 
